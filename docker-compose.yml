@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: .
+    restart: unless-stopped
+    stdin_open: true
+    ports:
+      - 8000:8000
+    volumes:
+      - ./src/:/src/
+      # - ./RELY-backend:/RELY-backend
+      # - ./logs:/logs
+      # - /etc/localtime:/etc/localtime:ro  # timezone
+      # - /etc/timezone:/etc/timezone:ro  # timezone
+    # env_file: 
+      # - .env
+    tty: true
+    command: python /src/main.py
